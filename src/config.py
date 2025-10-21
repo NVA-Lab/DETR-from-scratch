@@ -1,3 +1,37 @@
+from dataclasses import dataclass
+from typing import Dict, Tuple
+
+
+@dataclass
+class TrainConfig:
+    data_dir: str = "data/coco_lp"
+    batch_size: int = 4
+    num_workers: int = 0
+    lr: float = 1e-4
+    lr_backbone: float = 1e-5
+    weight_decay: float = 1e-4
+    max_steps: int = 200
+    gradient_clip_val: float = 0.1
+    accelerator: str = "auto"
+    seed: int = 42
+    log_dir: str = "lightning_logs/coco_lp_logs"
+
+
+def get_config() -> TrainConfig:
+    return TrainConfig()
+
+
+def build_label_mappings_from_coco_dataset(dataset) -> Tuple[Dict[int, str], Dict[str, int]]:
+    """torchvision CocoDetection 기반 데이터셋에서 라벨 매핑 생성.
+
+    Returns:
+        id2label, label2id
+    """
+    cats = dataset.coco.cats  # type: ignore[attr-defined]
+    id2label = {int(k): v["name"] for k, v in cats.items()}
+    label2id = {v: k for k, v in id2label.items()}
+    return id2label, label2id
+
 dataset_config = {
     'train_im_sets': ['data/VOC2007', 'data/VOC2012'],
     'test_im_sets': ['data/VOC2007-test'],

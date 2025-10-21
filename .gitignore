@@ -14,3 +14,8 @@ kaggle.json
 data/
 
 lightning_logs/
+scripts/finetune_deformable_detr.py
+scripts/finetune_rt_detr.py
+
+src/dataset.py
+src/models.py
