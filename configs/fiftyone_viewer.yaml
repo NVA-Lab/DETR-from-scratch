@@ -1,0 +1,36 @@
+# FiftyOne Viewer Configuration
+# ===============================
+#
+# 이 파일을 수정하여 시각화할 데이터셋을 설정하세요.
+# 아래 예제를 참고하여 coco 또는 yolo 형식에 맞게 정보를 입력한 후,
+# 이 파일의 경로를 사용하여 스크립트를 실행합니다.
+#
+# 실행 명령어:
+# python src/fiftyone_viewer.py --config configs/fiftyone_viewer.yaml
+#
+
+# --- laboro_tomato Dataset (COCO format) ---
+# -------------------------------------------
+format: "coco"
+image_path: "data/merged_tomato/train"
+labels_path: "data/merged_tomato/train/train_annotations.json"
+dataset_name: "merged_tomato_train"
+
+
+# --- COCO Dataset Example ---
+# 아래 주석을 해제하고 경로를 맞게 수정하여 사용하세요.
+# -----------------------------
+# format: "coco"
+# image_path: "/path/to/your/coco/images"
+# labels_path: "/path/to/your/coco/annotations.json"
+# dataset_name: "my-coco-dataset"
+
+
+# --- YOLO Dataset Example ---
+# 아래 주석을 해제하고 경로를 맞게 수정하여 사용하세요.
+# -----------------------------
+# format: "yolo"
+# image_path: "/path/to/your/yolo/images"
+# labels_path: "/path/to/your/yolo/labels"
+# classes: "/path/to/your/classes.names"
+# dataset_name: "my-yolo-dataset"
